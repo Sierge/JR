@@ -1,35 +1,27 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 public class Main {
-
-
     public static void main(String[] args) {
-        String[] urls = {"https://javarush.ru", "https://google.com", "http://wikipedia.org", "facebook.com", "https://instagram", "codegym.cc"};
-        for (String url : urls) {
-            String protocol = checkProtocol(url);
-            String domain = checkDomain(url);
-
-            System.out.println("У URL-адреса - " + url + ", сетевой протокол - " + protocol + ", домен - " + domain);
-        }
+        Human max = new Human("Макс");
+        String out = "Java объект: " + max;
+        System.out.println(out);
+        // Вывод: Java объект: Человек с именем Макс
     }
 
-    public static String checkProtocol(String url) {
-       // if (url.startsWith("http") || url.startsWith("https")) {
-        if (url.startsWith("http")) {return "http";} else if (url.startsWith("https")) {return "https";}
+    static class Human {
+        private String name;
 
-        return "неизвестный";
-    }
-
-    public static String checkDomain(String url) {
-        if (url.endsWith("com")) {
-            return "com";
-        } else if (url.endsWith("net")) {
-            return "net";
-        } else if (url.endsWith("org")) {
-            return "org";
-        } else if (url.endsWith("ru")) {
-            return "ru";
+        public Human(String name) {
+            this.name = name;
         }
 
-
-        return "неизвестный";
+        @Override
+        public String toString() {
+            return "Человек с именем " + name;
+        }
     }
 }
